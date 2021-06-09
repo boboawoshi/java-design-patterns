@@ -26,6 +26,8 @@ package com.iluwatar.singleton;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.lang.reflect.InvocationTargetException;
+
+import lombok.var;
 import org.junit.jupiter.api.Test;
 
 /**
