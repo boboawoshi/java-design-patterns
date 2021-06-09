@@ -34,8 +34,6 @@ import java.util.concurrent.Executors;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-import lombok.var;
 import org.junit.jupiter.api.Test;
 
 /**

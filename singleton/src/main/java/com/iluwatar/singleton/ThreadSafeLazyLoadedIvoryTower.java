@@ -35,7 +35,7 @@ public final class ThreadSafeLazyLoadedIvoryTower {
   private ThreadSafeLazyLoadedIvoryTower() {
     // Protect against instantiation via reflection
     if (instance == null) {
-      instance = this;//this（当前对象）是进入构造器之前产生的
+      instance = this;
     } else {
       throw new IllegalStateException("Already initialized.");
     }
