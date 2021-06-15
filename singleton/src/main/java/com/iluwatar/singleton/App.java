@@ -24,20 +24,18 @@
 package com.iluwatar.singleton;
 
 import lombok.extern.slf4j.Slf4j;
+import lombok.var;
 
 /**
- * <p>Singleton pattern ensures that the class can have only one existing instance per Java
- * classloader instance and provides global access to it.</p>
+ * <p>单例模式确保每个Java类加载器实例只能有一个现有实例，并提供对它的全局访问  .</p>
  *
- * <p>One of the risks of this pattern is that bugs resulting from setting a singleton up in a
- * distributed environment can be tricky to debug, since it will work fine if you debug with a
- * single classloader. Additionally, these problems can crop up a while after the implementation of
- * a singleton, since they may start out synchronous and only become async with time, so it may
- * not be clear why you are seeing certain changes in behaviour.</p>
+ * <p>这种模式的风险之一是，在分布式环境中设置单例对象所导致的错误调试起来可能很棘手，
+ * 因为如果使用单个类加载器进行调试，它就可以正常工作。
+ * 此外，这些问题可能会在实现单例对象后一段时间内突然出现，
+ * 因为它们可能一开始是同步的，但随着时间的推移会变成异步的，所以你可能不清楚为什么会看到某些行为的变化.</p>
  *
- * <p>There are many ways to implement the Singleton. The first one is the eagerly initialized
- * instance in {@link IvoryTower}. Eager initialization implies that the implementation is thread
- * safe. If you can afford giving up control of the instantiation moment, then this implementation
+ * <p>有很多方法可以实现单例. The first one is the eagerly initialized
+ * instance in {@link IvoryTower}. 预加载意味着线程是安全的. If you can afford giving up control of the instantiation moment, then this implementation
  * will suit you fine.</p>
  *
  * <p>The other option to implement eagerly initialized Singleton is enum based Singleton. The
@@ -70,25 +68,25 @@ public class App {
    */
   public static void main(String[] args) {
 
-    // eagerly initialized singleton
+    // 饿汉模式
     var ivoryTower1 = IvoryTower.getInstance();
     var ivoryTower2 = IvoryTower.getInstance();
     LOGGER.info("ivoryTower1={}", ivoryTower1);
     LOGGER.info("ivoryTower2={}", ivoryTower2);
 
-    // lazily initialized singleton
+    // 懒汉模式
     var threadSafeIvoryTower1 = ThreadSafeLazyLoadedIvoryTower.getInstance();
     var threadSafeIvoryTower2 = ThreadSafeLazyLoadedIvoryTower.getInstance();
     LOGGER.info("threadSafeIvoryTower1={}", threadSafeIvoryTower1);
     LOGGER.info("threadSafeIvoryTower2={}", threadSafeIvoryTower2);
 
-    // enum singleton
+    // 枚举单例
     var enumIvoryTower1 = EnumIvoryTower.INSTANCE;
     var enumIvoryTower2 = EnumIvoryTower.INSTANCE;
     LOGGER.info("enumIvoryTower1={}", enumIvoryTower1);
     LOGGER.info("enumIvoryTower2={}", enumIvoryTower2);
 
-    // double checked locking
+    // 双重检查锁定
     var dcl1 = ThreadSafeDoubleCheckLocking.getInstance();
     LOGGER.info(dcl1.toString());
     var dcl2 = ThreadSafeDoubleCheckLocking.getInstance();

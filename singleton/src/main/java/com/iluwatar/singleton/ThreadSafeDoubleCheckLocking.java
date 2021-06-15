@@ -23,6 +23,8 @@
 
 package com.iluwatar.singleton;
 
+import lombok.var;
+
 /**
  * <p>Double check locking.</p>
  *
